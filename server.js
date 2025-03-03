@@ -1,7 +1,15 @@
 const express = require('express');
 const {PrismaClient} = require("@prisma/client");
 const bodyParser = require("body-parser")
+const crypto = require("crypto-js");
+const env = require("dotenv");
 
+env.config();
+
+function encode(data) {
+        const password = crypto.AES.encrypt(data, process.env.SECRET_KEY);
+        return password, password.toString();
+}
 const app = express()
 app.use(bodyParser.json())
 const prisma =  new PrismaClient();
@@ -32,7 +40,7 @@ app.post('/user', async (req, res) =>{
         data: {
             username: req.body.username,
             password: req.body.password, //{} => req.body ---> if all fill match
-            cardId: req.body.cardId
+            cardId: encodeData(req.body.cardId)
         }
     });
     if(response){

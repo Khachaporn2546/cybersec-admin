@@ -1,28 +1,45 @@
-#User 
-POST http://localhost:3000/user HTTP/1.1
+# User
+POST http://localhost:3000/user
+Content-Type: application/json### 
+POST http://localhost:3000/user
 Content-Type: application/json
 
 {
     "username": "demo3",
-    "password":"demo3",
-    "cardId":"123456"
+    "password": "demo3"
 }
 
-####
-//Update user 
-PUT http://localhost:3000/user HTTP/1.1
+
+GET http://localhost:3000/users
+
+
+GET http://localhost:3000/user
 Content-Type: application/json
 
-{   
-    "id": 2,
-    "password":"demo11"
-}
-
-####
-//Delete User 
-DELETE  http://localhost:3000/user HTTP/1.1
-Content-Type: application/json
-
-{   
+{
     "id": 1
+}
+
+
+PUT http://localhost:3000/user
+Content-Type: application/json
+
+{
+    "id": 1,
+    "username": "updatedUser",
+    "password": "newpassword123"
+}
+
+### 📌 5️⃣ DELETE User
+DELETE http://localhost:3000/user
+Content-Type: application/json
+
+{
+    "id": 1
+}
+
+
+{
+    "username": "demo3",
+    "password": "demo3"
 }
